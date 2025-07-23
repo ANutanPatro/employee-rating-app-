@@ -14,13 +14,22 @@ import { CommonModule } from '@angular/common';
 export class EmployeeRatingComponent implements OnInit {
   ratings = [1, 2, 3, 4, 5];
   performanceCriteria = [
-    '💬Communication',
-    '⏰Punctuality',
-    '📋Task Allocation',
-    '🤝Teamwork',
-   ' 🔄Adaptability' ,
-   '📊Quantity and Quality'
-  ];
+
+  { key: 'communication', label: '💬Communication' },
+
+  { key: 'punctuality', label: '⏰Punctuality' },
+
+  { key: 'task_allocation', label: '📋Task Allocation' },
+
+  { key: 'teamwork', label: '🤝Teamwork' },
+
+  { key: 'adaptability', label: '🔄Adaptability' },
+
+  { key: 'quantity_and_quality', label: '📊Quantity and Quality' }
+
+];
+
+ 
 
     employeeId: string = '';
   employeeName: string = '';

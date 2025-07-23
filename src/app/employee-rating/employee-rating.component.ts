@@ -22,10 +22,11 @@ export class EmployeeRatingComponent implements OnInit {
    '📊Quantity and Quality'
   ];
 
-  employeeId = '';
-  employeeName = '';
-  designation = '';
-  project_name = '';
+    employeeId: string = '';
+  employeeName: string = '';
+  designation: string = '';
+  project_name: string = '';
+
   formData: { [key: string]: number } = {};
   isDarkMode = false;
 

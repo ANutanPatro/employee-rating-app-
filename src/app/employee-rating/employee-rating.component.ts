@@ -99,9 +99,6 @@ export class EmployeeRatingComponent implements OnInit {
 
 }
 
- 
-}
-
   toggleTheme(): void {
     this.isDarkMode = !this.isDarkMode;
     if (this.isDarkMode) {

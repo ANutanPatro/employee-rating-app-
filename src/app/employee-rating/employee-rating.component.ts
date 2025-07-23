@@ -112,25 +112,38 @@ export class EmployeeRatingComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const dataToSend = {
-      employeeId: this.employeeId,
-      employeeName: this.employeeName,
-      designation: this.designation,
-      projectName: this.project_name,
-      ratings: this.formData
-    };
 
-    console.log('📤 Sending to backend:', dataToSend);
+  const payload = {
 
-    this.http.post(`http://localhost:8080/rating/save/${this.employeeId}`, dataToSend).subscribe({
-      next: (response) => {
-        console.log('✅ Submitted successfully:', response);
-        alert('Form submitted successfully!');
-      },
-      error: (error) => {
-        console.error('❌ Submission failed:', error);
-        alert('Submission failed. Please check backend or URL.');
-      }
-    });
-  }
+    employeeId: this.employeeId,
+
+    ...this.formData // spreads only the rating keys and values
+
+  };
+ 
+  console.log('📤 Sending to backend:', payload);
+ 
+  this.http.post(`http://localhost:8080/rating/save/${this.employeeId}`, payload).subscribe({
+
+    next: (response) => {
+
+      console.log('✅ Submitted successfully:', response);
+
+      alert('Form submitted successfully!');
+
+    },
+
+    error: (error) => {
+
+      console.error('❌ Submission failed:', error);
+
+      alert('Submission failed. Please check backend or URL.');
+
+    }
+
+  });
+
+}
+
+ 
 }

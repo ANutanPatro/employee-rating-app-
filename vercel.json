@@ -12,7 +12,7 @@
 
       "config": {
 
-        "distDir": "dist/employee-rating-app"
+        "distDir": "dist/employee-rating-app-"
 
       }
 

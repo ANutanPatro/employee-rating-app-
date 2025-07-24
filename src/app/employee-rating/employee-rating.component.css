@@ -12,7 +12,7 @@
   --table-hover: #fff4e0;
   --highlight-cell: #fff4e0;
 }
-
+ 
 /* Dark Mode Theme */
 .dark-mode {
   --bg-color: #121212;
@@ -27,38 +27,38 @@
   --table-hover: #2a2a2a;
   --highlight-cell: #333333;
 }
-
-
+ 
+ 
 .container {
   max-width: 800px;
   margin: auto;
   padding: 1rem;
   font-family: Arial, sans-serif;
 }
-
+ 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
+ 
 .logo {
   width: 100px;
 }
-
+ 
 .theme-toggle {
   background: none;
   border: none;
   font-size: 24px;
   cursor: pointer;
 }
-
+ 
 h1 {
   text-align: center;
   flex-grow: 1;
   font-weight: bold;
 }
-
+ 
 .employee-info {
   display: flex;
   justify-content: space-between;
@@ -69,37 +69,37 @@ h1 {
   padding: 1rem;
   border-radius: 10px;
 }
-
+ 
 .employee-info label {
   flex: 1 1 45%;
 }
-
+ 
 .employee-info input {
   width: 100%;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
+ 
 .rating-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
   border: 2px solid #f7931e;
 }
-
+ 
 .rating-table th,
 .rating-table td {
   text-align: center;
   padding: 10px;
   border: 1px solid #f7931e;
 }
-
+ 
 .rating-table td:first-child {
   text-align: left;
   font-weight: bold;
 }
-
+ 
 .submit-btn {
   margin-top: 20px;
   padding: 10px 30px;
@@ -111,12 +111,12 @@ h1 {
   cursor: pointer;
   box-shadow: 2px 2px 5px gray;
 }
-
+ 
 .submit-btn:hover {
   background-color: darkorange;
 }
-
-
+ 
+ 
 /* Header with logo and title */
 .form-header {
   display: flex;
@@ -129,21 +129,21 @@ h1 {
   box-shadow: 0 0 10px var(--border-color);
   color: var(--text-color);
 }
-
-
-
+ 
+ 
+ 
 /* Logo */
-
+ 
 .logo-left {
   position: absolute;
   left: 1px;
   top: 1px;
 }
-
+ 
 .logo-left img {
   height: 100px;
 }
-
+ 
 /* Title */
 .form-title {
   margin: 0;
@@ -152,7 +152,7 @@ h1 {
   color: var(--text-color);
   text-align: center;
 }
-
+ 
 /* Employee Info */
 .employee-info {
   display: flex;
@@ -166,14 +166,14 @@ h1 {
   box-shadow: 0 0 10px var(--border-color);
   color: var(--text-color);
 }
-
+ 
 .employee-info label {
   display: flex;
   flex-direction: column;
   font-weight: 500;
   color: var(--text-color);
 }
-
+ 
 .employee-info input {
   margin-top: 5px;
   padding: 8px;
@@ -185,12 +185,12 @@ h1 {
   outline: none;
   transition: 0.3s ease;
 }
-
+ 
 .employee-info input:focus {
   border-color: #ffa94d;
   box-shadow: 0 0 5px #ffa94d;
 }
-
+ 
 /* Table Styling */
 table {
   width: 80%;
@@ -203,19 +203,19 @@ table {
   color: var(--text-color);
   background-color: var(--bg-color);
 }
-
+ 
 table th, table td {
   border: 2px solid var(--border-color);
   padding: 15px;
   text-align: center;
   color: var(--text-color);
 }
-
+ 
 table th {
   background-color: var(--table-header-bg);
   font-weight: 600;
 }
-
+ 
 /* Submit Button */
 button[type="submit"] {
   display: block;
@@ -229,11 +229,11 @@ button[type="submit"] {
   border-radius: 6px;
   cursor: pointer;
 }
-
+ 
 button[type="submit"]:hover {
   opacity: 0.9;
 }
-
+ 
 /* Toggle Theme Icon */
 .theme-toggle-icon {
   position: absolute;
@@ -242,14 +242,15 @@ button[type="submit"]:hover {
   font-size: 28px;
   cursor: pointer;
   z-index: 1000;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
   color: var(--text-color);
 }
-
+ 
 .theme-toggle-icon:hover {
   transform: scale(1.2);
+  filter: drop-shadow(0 0 6px orange) drop-shadow(0 0 12px orange);
 }
-
+ 
 /* Target the table radio buttons and highlight their cell when selected */
 td input[type="radio"] {
   appearance: none;
@@ -262,35 +263,35 @@ td input[type="radio"] {
   transition: 0.2s all ease-in-out;
   position: relative;
 }
-
+ 
 td input[type="radio"]:checked {
   background-color: #ffa500;
   border-color: #ff6f00;
   box-shadow: 0 0 0 4px rgba(255, 165, 0, 0.3);
 }
-
+ 
 /* Highlight the table cell of the selected rating */
 td:has(input[type="radio"]:checked) {
   background-color: #fff4e0;
   transition: background-color 0.3s ease;
 }
-
+ 
 /* Make even-numbered rows a light background */
 table tr:nth-child(even) {
   background-color: #fffaf2; /* soft cream-like */
 }
-
+ 
 /* Make odd-numbered rows a different soft background */
 table tr:nth-child(odd) {
   background-color: #ffffff; /* white */
 }
-
+ 
 table tr:hover {
   background-color: #fff4e0; /* soft orange-tint on hover */
   transition: 0.3s ease-in-out;
 }
-
-
+ 
+ 
 /* Table Border Styling */
 table {
   width: 100%;
@@ -302,7 +303,7 @@ table {
   margin-bottom: 20px;
   background-color: white;
 }
-
+ 
 /* Table Cell Styling */
 table th, table td {
   border: 1px solid #ffa500;
@@ -310,7 +311,7 @@ table th, table td {
   text-align: center;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-
+ 
 /* Rounded corners only on outer table edges */
 table tr:first-child th:first-child {
   border-top-left-radius: 12px;
@@ -324,14 +325,14 @@ table tr:last-child td:first-child {
 table tr:last-child td:last-child {
   border-bottom-right-radius: 12px;
 }
-
+ 
 /* Hover Effect for Cells */
 table td:hover {
   background-color: #fff0d9;
   border-color: #ff8800;
   cursor: pointer;
 }
-
+ 
 .rating-section input[type="radio"] {
   appearance: none;
   width: 18px;
@@ -343,40 +344,40 @@ table td:hover {
   transition: 0.2s all ease-in-out;
   position: relative;
 }
-
+ 
 .rating-section input[type="radio"]:checked {
   background-color: #ffa500;
   border-color: #ff6f00;
   box-shadow: 0 0 0 4px rgba(255, 165, 0, 0.3);
 }
-
-
+ 
+ 
 .rating-section table th {
   background-color: var(--table-header-bg);
   color: var(--text-color);
 }
-
+ 
 /* Table rows using the new variables */
 .rating-section table tr:nth-child(even) {
   background-color: var(--table-row-even);
 }
-
+ 
 .rating-section table tr:nth-child(odd) {
   background-color: var(--table-row-odd);
 }
-
+ 
 .rating-section table tr:hover {
   background-color: var(--table-hover);
   transition: 0.3s ease-in-out;
 }
-
+ 
 /* Highlight cell when radio is selected */
 .rating-section td:has(input[type="radio"]:checked) {
   background-color: var(--highlight-cell);
 }
-
-
-
+ 
+ 
+ 
 button[type="submit"] {
   background-color: #ff6f00;
   color: white;
@@ -391,13 +392,13 @@ button[type="submit"] {
   margin: 20px auto;
   box-shadow: 0 4px 6px rgba(255, 111, 0, 0.3);
 }
-
+ 
 button[type="submit"]:hover {
   background-color: #e65100;
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(255, 111, 0, 0.4);
 }
-
+ 
 .form-container {
   background-color: white;
   max-width: 800px;
@@ -407,7 +408,7 @@ button[type="submit"]:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
-
+ 
 input[type="text"],
 select {
   width: 100%;
@@ -418,18 +419,18 @@ select {
   font-size: 1rem;
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
-
+ 
 input[type="text"]:focus,
 select:focus {
   border-color: #ff9800;
   box-shadow: 0 0 8px rgba(255, 152, 0, 0.3);
   outline: none;
 }
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
 .employee-card-orange {
   border: 2px solid orange;
   border-radius: 12px;
@@ -439,13 +440,13 @@ select:focus {
   background-color: #fff6e5;
   box-shadow: 0 0 8px orange;
 }
-
+ 
 .employee-grid-orange {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
-
+ 
 .form-group-orange label {
   display: block;
   font-weight: bold;
@@ -453,7 +454,7 @@ select:focus {
   margin-bottom: 6px;
   font-size: 15px;
 }
-
+ 
 .form-group-orange input {
   width: 100%;
   padding: 10px;
@@ -463,12 +464,12 @@ select:focus {
   background-color: #fff;
   transition: box-shadow 0.3s ease-in-out;
 }
-
+ 
 .form-group-orange input:focus {
   outline: none;
   box-shadow: 0 0 5px orange;
 }
-
+ 
 .employee-input-card {
   border: 2px solid orange;
   border-radius: 12px;
@@ -478,28 +479,28 @@ select:focus {
   box-shadow: 0 0 8px orange;
   max-width: 1200px;
 }
-
+ 
 .employee-input-group {
   display: flex;
   justify-content: space-between;
   gap: 20px; /* Horizontal space between items */
   flex-wrap: wrap;
 }
-
+ 
 .form-item {
   flex: 1 1 22%; /* 4 fields in one row, responsive */
   display: flex;
   flex-direction: column;
   min-width: 220px;
 }
-
+ 
 .form-item label {
   font-weight: bold;
   margin-bottom: 6px;
   font-size: 14px;
   color: #333;
 }
-
+ 
 .form-item input {
   padding: 10px;
   border: 2px solid orange;
@@ -508,13 +509,13 @@ select:focus {
   background-color: white;
   transition: box-shadow 0.2s;
 }
-
+ 
 .form-item input:focus {
   outline: none;
   box-shadow: 0 0 6px orange;
 }
-
-
+ 
+ 
 .employee-header {
   border: 2px solid orange;
   border-radius: 12px;
@@ -524,28 +525,28 @@ select:focus {
   width: 100%;
   box-sizing: border-box;
 }
-
+ 
 .employee-fields {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-between;
 }
-
+ 
 .employee-field {
   flex: 1 1 22%; /* Adjusts based on screen size */
   min-width: 200px;
   display: flex;
   flex-direction: column;
 }
-
+ 
 .employee-field label {
   font-weight: bold;
   margin-bottom: 6px;
   color: #333;
   font-size: 15px;
 }
-
+ 
 .employee-field input {
   padding: 10px;
   border-radius: 6px;
@@ -555,16 +556,16 @@ select:focus {
   width: 100%;
   box-sizing: border-box;
 }
-
+ 
 .employee-field input:focus {
   outline: none;
   border-color: darkorange;
   box-shadow: 0 0 6px orange;
 }
-
-
-
-
+ 
+ 
+ 
+ 
 /* Light Theme (default) */
 :root {
   --bg-color: #ffffff;
@@ -579,7 +580,7 @@ select:focus {
   --table-hover: #fff4e0;
   --highlight-cell: #fff4e0;
 }
-
+ 
 /* Dark Mode Theme */
 body.dark-mode {
   --bg-color: #121212;
@@ -594,14 +595,14 @@ body.dark-mode {
   --table-hover: #2a2a2a;
   --highlight-cell: #333333;
 }
-
+ 
 /* Global Styles */
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+ 
 .container,
 .form-container,
 .employee-input-card,
@@ -612,7 +613,7 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+ 
 input,
 select,
 textarea,
@@ -625,7 +626,7 @@ textarea,
   border: 2px solid var(--border-color);
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-
+ 
 .employee-info,
 .employee-info label,
 .form-item label,
@@ -633,50 +634,50 @@ textarea,
 .form-group-orange label {
   color: var(--text-color);
 }
-
+ 
 h1,
 .form-title {
   color: var(--text-color);
 }
-
+ 
 button[type="submit"],
 .submit-btn {
   background-color: var(--button-bg);
   color: var(--button-text);
 }
-
+ 
 button[type="submit"]:hover,
 .submit-btn:hover {
   background-color: #e65100;
 }
-
+ 
 .rating-section table th {
   background-color: var(--table-header-bg);
   color: var(--text-color);
 }
-
+ 
 .rating-section table tr:nth-child(even) {
   background-color: var(--table-row-even);
 }
-
+ 
 .rating-section table tr:nth-child(odd) {
   background-color: var(--table-row-odd);
 }
-
+ 
 .rating-section table tr:hover {
   background-color: var(--table-hover);
 }
-
+ 
 .rating-section td:has(input[type="radio"]:checked) {
   background-color: var(--highlight-cell);
 }
-
+ 
 /* Theme Toggle Icon */
 .theme-toggle-icon {
   color: var(--text-color);
   transition: color 0.3s ease;
 }
-
+ 
 /* Table Styling */
 table,
 .rating-table {
@@ -684,7 +685,7 @@ table,
   color: var(--text-color);
   border: 2px solid var(--border-color);
 }
-
+ 
 table th,
 table td,
 .rating-table th,
@@ -693,30 +694,30 @@ table td,
   color: var(--text-color);
   background-color: inherit;
 }
-
+ 
 table th {
   background-color: var(--table-header-bg);
 }
-
+ 
 table tr:nth-child(even),
 .rating-table tr:nth-child(even) {
   background-color: var(--table-row-even);
 }
-
+ 
 table tr:nth-child(odd),
 .rating-table tr:nth-child(odd) {
   background-color: var(--table-row-odd);
 }
-
+ 
 table tr:hover,
 .rating-table tr:hover {
   background-color: var(--table-hover);
 }
-
+ 
 .rating-table td:has(input[type="radio"]:checked) {
   background-color: var(--highlight-cell);
 }
-
+ 
 /* Ensure consistent dark mode behavior */
 .logo-left img,
 .theme-toggle-icon {
@@ -725,4 +726,31 @@ table tr:hover,
 body.dark-mode .logo-left img {
   filter: brightness(0.8);
 }
-
+ 
+.employee-fields {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+ 
+@media screen and (max-width: 1024px) {
+  .employee-fields {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  }
+}
+ 
+@media screen and (max-width: 600px) {
+  .employee-fields {
+    grid-template-columns: 1fr; /* 1 per row */
+  }
+}
+ 
+.employee-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+ 
+ 
+ 
+ 

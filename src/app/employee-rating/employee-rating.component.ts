@@ -12,147 +12,129 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./employee-rating.component.css']
 })
 export class EmployeeRatingComponent implements OnInit {
+submitForm() {
+throw new Error('Method not implemented.');
+}
   ratings = [1, 2, 3, 4, 5];
+
   performanceCriteria = [
+    { key: 'communication', label: '💬Communication' },
+    { key: 'punctuality', label: '⏰Punctuality' },
+    { key: 'task_allocation', label: '📋Task Allocation' },
+    { key: 'teamwork', label: '🤝Teamwork' },
+    { key: 'adaptability', label: '🔄Adaptability' },
+    { key: 'quantity_and_quality', label: '📊Quantity and Quality' }
+  ];
 
-  { key: 'communication', label: '💬Communication' },
+  employees: any[] = [];
 
-  { key: 'punctuality', label: '⏰Punctuality' },
+  employeeForms: any[] = [];
 
-  { key: 'task_allocation', label: '📋Task Allocation' },
-
-  { key: 'teamwork', label: '🤝Teamwork' },
-
-  { key: 'adaptability', label: '🔄Adaptability' },
-
-  { key: 'quantity_and_quality', label: '📊Quantity and Quality' }
-
-];
-
- 
-
-    employeeId: string = '';
-  employeeName: string = '';
-  designation: string = '';
-  project_name: string = '';
-
-  formData: { [key: string]: number } = {};
   isDarkMode = false;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    const storedTheme = localStorage.getItem('theme');
+    this.isDarkMode = storedTheme === 'dark';
+    document.body.classList.toggle('dark-mode', this.isDarkMode);
 
-  const storedTheme = localStorage.getItem('theme');
+    this.fetchEmployees();
+    this.addEmployeeForm(); // Add default form on init
+  }
 
-  this.isDarkMode = storedTheme === 'dark';
+  fetchEmployees() {
+    this.http.get<any[]>('http://localhost:8080/employees').subscribe({
+      next: (data) => {
+        this.employees = data;
+      },
+      error: (err) => {
+        console.error('Error fetching employee list:', err);
+      }
+    });
+  }
 
-  document.body.classList.toggle('dark-mode', this.isDarkMode);
- 
-  this.route.queryParamMap.subscribe(params => {
 
-    const empId = params.get('empId'); // ✅ correct key
+  currentIndex = 0;
 
-    const name = params.get('name');
-
-    const designation = params.get('designation');
-
-    const project = params.get('projectName');
- 
-    if (empId && name && designation && project) {
-
-      this.employeeId = empId;
-
-      this.employeeName = name;
-
-      this.designation = designation;
-
-      this.project_name = project;
- 
-      // ✅ Optional GET call to pre-fill or validate
-
-      this.http.get<any>(`http://localhost:8080/rating/save/${this.employeeId}`).subscribe({
-
-        next: (data) => {
-
-          console.log('✅ Employee fetched:', data);
-
-          // Optionally update more fields if needed
-
-        },
-
-        error: (err) => {
-
-          console.error('❌ Failed to fetch employee data:', err);
-
-          // Don’t alert if optional
-
-        }
-
-      });
- 
-    } else {
-
-      console.warn('⚠️ Missing query params!');
-
-      this.employeeId = '';
-
-      this.employeeName = '';
-
-      this.designation = '';
-
-      this.project_name = '';
-
-    }
-
-  });
-
+goToPreviousCard() {
+  if (this.currentIndex > 0) {
+    this.currentIndex--;
+  }
 }
+
+goToNextCard() {
+  if (this.currentIndex < this.employeeForms.length - 1) {
+    this.currentIndex++;
+  }
+}
+
+  addEmployeeForm() {
+    this.employeeForms.push({
+      employeeId: '',
+      employeeName: '',
+      designation: '',
+      project_name: '',
+      formData: {}
+    });
+    this.currentIndex = this.employeeForms.length - 1; 
+  }
+
+    removeEmployeeForm(i: number) {
+  this.employeeForms.splice(i, 1);
+  if (this.currentIndex >= this.employeeForms.length) {
+    this.currentIndex = this.employeeForms.length - 1;
+  }
+}
+
+
+  onEmployeeSelect(selectedId: string, index: number) {
+    if (!selectedId) return;
+
+    this.http.get<any>(`http://localhost:8080/rating/save/${selectedId}`).subscribe({
+      next: (data) => {
+        this.employeeForms[index].employeeName = data.employeeName;
+        this.employeeForms[index].designation = data.designation;
+        this.employeeForms[index].project_name = data.projectName;
+
+        // Initialize criteria values
+        this.performanceCriteria.forEach(criteria => {
+          this.employeeForms[index].formData[criteria.key] = data[criteria.key] ?? null;
+        });
+      },
+      error: (err) => {
+        console.error('❌ Failed to fetch employee details:', err);
+        alert('Failed to fetch employee details.');
+      }
+    });
+  }
 
   toggleTheme(): void {
     this.isDarkMode = !this.isDarkMode;
-    if (this.isDarkMode) {
-      document.body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.remove('dark-mode');
-      localStorage.setItem('theme', 'light');
-    }
+    document.body.classList.toggle('dark-mode', this.isDarkMode);
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
   }
 
-  onSubmit(): void {
+  submitAll() {
+    const payload = this.employeeForms.map(form => ({
+      employeeId: form.employeeId,
+      ...form.formData
+    }));
 
-  const payload = {
-
-    employeeId: this.employeeId,
-
-    ...this.formData // spreads only the rating keys and values
-
-  };
- 
-  console.log('📤 Sending to backend:', payload);
- 
-  this.http.post(`http://localhost:8080/rating/save/${this.employeeId}`, payload).subscribe({
-
-    next: (response) => {
-
-      console.log('✅ Submitted successfully:', response);
-
-      alert('Form submitted successfully!');
-
-    },
-
-    error: (error) => {
-
-      console.error('❌ Submission failed:', error);
-
-      alert('Submission failed. Please check backend or URL.');
-
+    if (payload.some(entry => !entry.employeeId || Object.values(entry).some(val => val === null))) {
+      alert('❗ Please complete all fields before submitting.');
+      return;
     }
 
-  });
-
-}
-
- 
+    this.http.post('http://localhost:8080/rating/save-multiple', payload).subscribe({
+      next: (res) => {
+        console.log('✅ Ratings submitted:', res);
+        alert('All ratings submitted successfully!');
+      },
+      error: (err) => {
+        console.error('❌ Submission failed:', err);
+        alert('Failed to submit ratings.');
+      }
+    });
+  }
 }

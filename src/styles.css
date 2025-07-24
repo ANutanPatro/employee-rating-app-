@@ -114,3 +114,24 @@ body, table, input, button {
     flex: 1 1 100%;
   }
 }
+
+.employee-rating-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.employee-rating-container.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.employee-rating-container.hidden {
+  display: none;
+}
+

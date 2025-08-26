@@ -13,6 +13,9 @@ import { RouterOutlet } from '@angular/router';
   imports: [FormsModule, CommonModule, RouterOutlet]
 })
 export class AppComponent{
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   ratings = [1, 2, 3, 4, 5];
   performanceCriteria = [
     '💬Communication',
